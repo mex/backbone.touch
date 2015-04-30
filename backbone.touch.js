@@ -50,7 +50,7 @@
             var suffix = '.delegateEvents' + this.cid;
             _(events).each(function(method, key) {
                 if (!_.isFunction(method)) method = this[events[key]];
-                if (!method) throw new Error('Method "' + events[key] + '" does not exist');
+                if (!method) return;
                 var match = key.match(delegateEventSplitter);
                 var eventName = match[1], selector = match[2];
                 var boundHandler = _.bind(this._touchHandler,this);
